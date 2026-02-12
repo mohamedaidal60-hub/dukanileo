@@ -1,86 +1,115 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Shield, Globe } from 'lucide-react';
+import { Zap, Shield, Globe, ArrowRight, Play, Package } from 'lucide-react';
 
 const Hero = () => {
     return (
-        <section className="relative h-[85vh] flex items-center overflow-hidden bg-soft pt-20">
-            {/* Background Decor */}
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-white">
+            {/* Dynamic Background */}
+            <div className="absolute top-0 right-0 w-2/3 h-full bg-soft rounded-l-[120px] -z-10 translate-x-20"></div>
+            <div className="absolute top-40 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
 
-            <div className="container grid lg:grid-cols-2 gap-12 items-center">
+            <div className="container relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+                {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 1, ease: "circOut" }}
                 >
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="flex items-center gap-2 bg-white px-4 py-2 rounded-full w-fit shadow-sm border border-primary/20 mb-6"
-                    >
-                        <Zap size={16} className="text-primary fill-primary" />
-                        <span className="text-xs font-bold tracking-wider uppercase">Direct Imports from China</span>
-                    </motion.div>
+                    <div className="inline-flex items-center gap-3 bg-white px-5 py-2.5 rounded-full shadow-lg border border-soft mb-10 hover:scale-105 transition-transform cursor-pointer">
+                        <span className="bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-tighter">NEW</span>
+                        <span className="text-[11px] font-extrabold tracking-widest uppercase text-secondary">CHINA IMPORTS 2026 ARRIVED</span>
+                    </div>
 
-                    <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-6">
-                        Everything You Need, <br />
-                        <span className="text-primary">All In One Place.</span>
+                    <h1 className="text-6xl md:text-8xl font-black leading-[0.95] mb-10 tracking-tighter">
+                        PREMIUM <br />
+                        <span className="text-primary italic">PRODUCTS</span><br />
+                        DIRECT TO YOU.
                     </h1>
 
-                    <p className="text-muted text-lg mb-8 max-w-lg">
-                        Your premium destination for Kariakoo goods and direct quality imports.
-                        Furniture, Electronics, Fashion, and more with guaranteed quality.
+                    <p className="text-muted text-xl md:text-2xl mb-12 max-w-xl font-medium leading-relaxed">
+                        Revolutionizing how Tanzania shops. High-quality furniture, professional cooking tools, and elite electronics from the world class brands.
                     </p>
 
-                    <div className="flex flex-wrap gap-4">
-                        <button className="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/30 hover:scale-105 transition-all flex items-center gap-2">
-                            Shop Now <ArrowRight size={20} />
+                    <div className="flex flex-wrap gap-8 items-center">
+                        <button className="bg-secondary text-white px-12 py-5 rounded-full font-black text-sm uppercase tracking-[2px] shadow-2xl hover:bg-primary transition-all hover:scale-110 flex items-center gap-4">
+                            Explore Shop <ArrowRight size={20} />
                         </button>
-                        <button className="bg-white text-secondary px-8 py-4 rounded-full font-bold shadow-md hover:bg-soft transition-all">
-                            Learn More
+                        <button className="flex items-center gap-4 group">
+                            <div className="w-16 h-16 rounded-full border-2 border-soft flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                                <Play size={20} className="fill-secondary group-hover:fill-white transition-all ml-1" />
+                            </div>
+                            <span className="font-black text-sm uppercase tracking-widest text-secondary group-hover:text-primary transition-colors">Watch Story</span>
                         </button>
                     </div>
 
-                    <div className="mt-12 flex gap-8">
-                        <div className="flex items-center gap-3">
-                            <div className="bg-white p-2 rounded-lg shadow-sm">
-                                <Shield size={20} className="text-primary" />
+                    <div className="mt-20 grid grid-cols-3 gap-10 border-t border-soft pt-12">
+                        {[
+                            { label: 'Articles', value: '45k+', icon: <Package size={18} className="text-primary" /> },
+                            { label: 'Satisfied', value: '12k+', icon: <Shield size={18} className="text-primary" /> },
+                            { label: 'Shipping', value: 'Direct', icon: <Globe size={18} className="text-primary" /> }
+                        ].map((stat, i) => (
+                            <div key={i} className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2">
+                                    {stat.icon}
+                                    <span className="text-2xl font-black text-secondary">{stat.value}</span>
+                                </div>
+                                <span className="text-[10px] font-black text-muted uppercase tracking-widest">{stat.label}</span>
                             </div>
-                            <div>
-                                <p className="text-xs font-bold uppercase">Quality</p>
-                                <p className="text-[10px] text-muted">Certified Goods</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <div className="bg-white p-2 rounded-lg shadow-sm">
-                                <Globe size={20} className="text-primary" />
-                            </div>
-                            <div>
-                                <p className="text-xs font-bold uppercase">Shipping</p>
-                                <p className="text-[10px] text-muted">Direct from China</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </motion.div>
 
+                {/* Visual Content */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative hidden lg:block"
+                    transition={{ duration: 1.2, ease: "backOut" }}
+                    className="relative lg:block"
                 >
-                    <img
-                        src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                        alt="Premium Furniture"
-                        className="rounded-[40px] shadow-2xl z-10 relative"
-                    />
-                    <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-xl z-20 max-w-[200px] border border-soft animate-bounce-slow">
-                        <p className="text-primary font-black text-3xl mb-1">30% OFF</p>
-                        <p className="text-xs font-bold text-muted uppercase">On All Furniture Items This Week</p>
+                    <div className="relative z-10 rounded-[80px] overflow-hidden shadow-2xl border-[16px] border-white group">
+                        <img
+                            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Elite Furniture"
+                            className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-[3s]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
+
+                    {/* Floating Glass Cards */}
+                    <motion.div
+                        animate={{ y: [0, -20, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-10 -right-10 bg-white/80 backdrop-blur-xl p-8 rounded-[40px] shadow-2xl z-20 max-w-[240px] border border-white"
+                    >
+                        <div className="flex items-center gap-4 mb-3">
+                            <div className="bg-primary p-2 rounded-xl text-white"><Zap size={20} /></div>
+                            <span className="font-black text-xs uppercase tracking-widest text-secondary">HOT DEAL</span>
+                        </div>
+                        <p className="text-primary font-black text-4xl mb-2 tracking-tighter">-45%</p>
+                        <p className="text-[11px] font-bold text-muted uppercase leading-relaxed">Save huge on all Kariakoo imports this week only.</p>
+                    </motion.div>
+
+                    <motion.div
+                        animate={{ y: [0, 20, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -bottom-10 -left-10 bg-white p-6 rounded-[32px] shadow-2xl z-20 flex items-center gap-6 border border-soft"
+                    >
+                        <div className="flex -space-x-4">
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-soft">
+                                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="user" />
+                                </div>
+                            ))}
+                            <div className="w-12 h-12 rounded-full border-4 border-white bg-primary flex items-center justify-center text-white font-black text-xs">
+                                +1k
+                            </div>
+                        </div>
+                        <div>
+                            <p className="font-black text-lg text-secondary">Trusted</p>
+                            <p className="text-[10px] font-bold text-muted uppercase">By 12,000 Users</p>
+                        </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
